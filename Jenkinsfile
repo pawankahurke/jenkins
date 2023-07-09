@@ -45,6 +45,7 @@ pipeline {
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
+                    
                         sh '''
                         cat deploy.yaml
                         sed -i '' "s/1/${BUILD_NUMBER}/g" deploy.yaml
@@ -54,7 +55,7 @@ pipeline {
                         git remote -v
                         git push git branch: 'main', url: 'https://github.com/pawankahurke/deploy.git' HEAD:main
                         '''                        
-                    }
+                    
                 }
             }
         }
