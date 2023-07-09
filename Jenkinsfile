@@ -17,12 +17,14 @@ pipeline {
         stage('Build Docker'){
             steps{
                 script{
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'Pkhacker@1', usernameVariable: 'hackerboypk')]) {
                     sh '''
                     echo 'Buid Docker Image'
                     docker build -t hackerboypk/cicd-e2e:${BUILD_NUMBER} .
                     '''
                 }
             }
+        }
         }
 
         stage('Push the artifacts'){
