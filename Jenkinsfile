@@ -30,6 +30,7 @@ pipeline {
            steps{
                 script{
                     sh '''
+                    docker login -u="hackerboypk" -p="Pkhacker@1" docekr.io
                     echo 'Push to Repo'
                     docker push hackerboypk/cicd-e2e:${BUILD_NUMBER}
                     '''
